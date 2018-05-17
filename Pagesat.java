@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
     public Pagesat() {
         initComponents();
         getConnection();
+        Show_Pacient_In_Table();
     }
     
     Connection con = null;
@@ -33,7 +35,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Ambullanta?useSSL=false", "root", "3134");
-            JOptionPane.showMessageDialog(null, "Connected To Database!");
+            //JOptionPane.showMessageDialog(null, "Connected To Database!");
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,13 +64,18 @@ public class Pagesat extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txt_id1 = new javax.swing.JTextField();
-        txt_id2 = new javax.swing.JTextField();
+        txt_emri = new javax.swing.JTextField();
+        txt_mbiemri = new javax.swing.JTextField();
+        btn_clear = new javax.swing.JButton();
+        btn_save = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_pagesat = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setPreferredSize(new java.awt.Dimension(550, 676));
 
         btn_gjeneroPagesen.setText("Gjenero Pagesen");
         btn_gjeneroPagesen.addActionListener(new java.awt.event.ActionListener() {
@@ -109,24 +116,57 @@ public class Pagesat extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Mbiemri:");
 
-        txt_id1.addActionListener(new java.awt.event.ActionListener() {
+        txt_emri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id1ActionPerformed(evt);
+                txt_emriActionPerformed(evt);
             }
         });
 
-        txt_id2.addActionListener(new java.awt.event.ActionListener() {
+        txt_mbiemri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id2ActionPerformed(evt);
+                txt_mbiemriActionPerformed(evt);
             }
         });
+
+        btn_clear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_clear.setText("Clear");
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
+
+        btn_save.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_save.setText("Save");
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
+
+        jTable_pagesat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "id", "emri", "mbiemri", "ineksionet", "cmimi"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable_pagesat);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -135,30 +175,38 @@ public class Pagesat extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_id2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_mbiemri, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_id1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_emri, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_gjeneroPagesen, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_gjeneroPagesen, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(txt_sasiaInjeksioneve, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txt_cmimi, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(txt_sasiaInjeksioneve, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_cmimi, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(69, 69, 69))
+                        .addComponent(btn_save)
+                        .addGap(42, 42, 42)
+                        .addComponent(btn_clear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -167,7 +215,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_gjeneroPagesen, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_id1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_emri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,9 +228,13 @@ public class Pagesat extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4))
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_id2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_mbiemri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_clear)
+                    .addComponent(btn_save))
+                .addGap(216, 216, 216))
         );
 
         pack();
@@ -194,7 +246,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
         double cmimi=injeksione+20;
         txt_cmimi.setText(Double.toString(cmimi));
         
-        ArrayList<Pagesa> productList = new ArrayList<Pagesa>();
+        ArrayList<Pagesa> pacientList = new ArrayList<Pagesa>();
         Connection con = getConnection();
         String query = "SELECT * FROM ambullantalogin.pagesat ";
 
@@ -208,9 +260,12 @@ public class Pagesat extends javax.swing.JInternalFrame {
             Pagesa pagesa;
 
             while (rs.next()) {
-                pagesa = new Pagesa(rs.getInt("id"), rs.getDouble("emri"));
+                pagesa = new Pagesa(rs.getInt("id"), rs.getString("emri"),
+                                    rs.getString("mbiemri"), rs.getInt("ineksionet"),
+                                    rs.getDouble("cmimi")
+                );
                         
-                productList.add(pagesa);
+                pacientList.add(pagesa);
             }
 
         } catch (SQLException ex) {
@@ -227,27 +282,115 @@ public class Pagesat extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idActionPerformed
 
-    private void txt_id1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id1ActionPerformed
+    private void txt_emriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emriActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_id1ActionPerformed
+    }//GEN-LAST:event_txt_emriActionPerformed
 
-    private void txt_id2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id2ActionPerformed
+    private void txt_mbiemriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mbiemriActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_id2ActionPerformed
+    }//GEN-LAST:event_txt_mbiemriActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        // TODO add your handling code here:
+        txt_id.setText("");
+        txt_emri.setText("");
+        txt_mbiemri.setText("");
+        txt_sasiaInjeksioneve.setText("");
+        txt_cmimi.setText("");
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btn_saveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_gjeneroPagesen;
+    private javax.swing.JButton btn_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable_pagesat;
     private javax.swing.JTextField txt_cmimi;
+    private javax.swing.JTextField txt_emri;
     private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_id1;
-    private javax.swing.JTextField txt_id2;
+    private javax.swing.JTextField txt_mbiemri;
     private javax.swing.JTextField txt_sasiaInjeksioneve;
     // End of variables declaration//GEN-END:variables
+    
+    public ArrayList<Pagesa> getPacientList() {
+
+        ArrayList<Pagesa> pacientList = new ArrayList<Pagesa>();
+
+        Connection con = getConnection();
+
+        String query = "SELECT * FROM ambullantalogin.pagesat ";
+
+        Statement st;
+
+        ResultSet rs;
+
+        try {
+
+            st = con.createStatement();
+
+            rs = st.executeQuery(query);
+
+            Pagesa pagesa;
+
+            while (rs.next()) {
+                pagesa = new Pagesa(rs.getInt("id"), rs.getString("emri"),
+                                    rs.getString("mbiemri"), rs.getInt("ineksionet"),
+                                    rs.getDouble("cmimi")
+                );
+                        
+                pacientList.add(pagesa);
+            }
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(RregjistrimiPacientit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return pacientList;
+
+    }
+
+    // 2 - Populate the JTable
+    public void Show_Pacient_In_Table() {
+
+        ArrayList<Pagesa> list = getPacientList();
+
+        DefaultTableModel model = (DefaultTableModel) jTable_pagesat.getModel();
+
+        //clear jtable content
+        model.setRowCount(0);
+
+        Object[] row = new Object[8];
+
+        for (int i = 0; i < list.size(); i++) {
+
+            row[0] = list.get(i).getId();
+
+            row[1] = list.get(i).getEmri();
+
+            row[2] = list.get(i).getMbiemri();
+
+            row[3] = list.get(i).getIneksionet();
+            
+            row[4] = list.get(i).getCmimi();
+
+            model.addRow(row);
+
+        }
+
+    }
+    
+        
 }

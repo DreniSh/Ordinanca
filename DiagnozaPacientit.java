@@ -40,7 +40,7 @@ public class DiagnozaPacientit extends javax.swing.JInternalFrame {
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Ambullanta?useSSL=false", "root", "3134");
-            JOptionPane.showMessageDialog(null, "Connected To Database!");
+            //JOptionPane.showMessageDialog(null, "Connected To Database!");
             return con;
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,7 +51,7 @@ public class DiagnozaPacientit extends javax.swing.JInternalFrame {
 
     public ArrayList<Pacienti> getPacientList() {
 
-        ArrayList<Pacienti> productList = new ArrayList<Pacienti>();
+        ArrayList<Pacienti> pacientList = new ArrayList<Pacienti>();
 
         Connection con = getConnection();
 
@@ -75,17 +75,16 @@ public class DiagnozaPacientit extends javax.swing.JInternalFrame {
                         rs.getString("mbiemri"), rs.getInt("mosha"),
                         rs.getString("emriPrindit"), rs.getDate("dataLindjes"));
 
-                productList.add(pacienti);
+                pacientList.add(pacienti);
 
             }
 
         } catch (SQLException ex) {
 
             Logger.getLogger(RregjistrimiPacientit.class.getName()).log(Level.SEVERE, null, ex);
-
         }
 
-        return productList;
+        return pacientList;
 
     }
 

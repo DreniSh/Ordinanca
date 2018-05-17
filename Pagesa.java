@@ -12,15 +12,46 @@ package projekt;
 public class Pagesa {
 
     private int id;
+    private String emri;
+    private String mbiemri;
+    private int ineksionet;
     private double cmimi;
 
-    Pagesa(int id, double cmimi) {
-        id = this.id;
-        cmimi = this.cmimi;
+    public Pagesa(int id, String emri, String mbiemri, int ineksionet, double cmimi) {
+        this.id = id;
+        this.emri = emri;
+        this.mbiemri = mbiemri;
+        this.ineksionet = ineksionet;
+        this.cmimi = cmimi;
     }
 
+    
     public int getId() {
         return id;
+    }
+
+    public String getEmri() {
+        return emri;
+    }
+
+    public void setEmri(String emri) {
+        this.emri = emri;
+    }
+
+    public String getMbiemri() {
+        return mbiemri;
+    }
+
+    public void setMbiemri(String mbiemri) {
+        this.mbiemri = mbiemri;
+    }
+
+    public int getIneksionet() {
+        return ineksionet;
+    }
+
+    public void setIneksionet(int ineksionet) {
+        this.ineksionet = ineksionet;
     }
 
     public void setId(int id) {

@@ -76,6 +76,8 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1_Pacienti = new javax.swing.JTable();
         btn_update = new javax.swing.JButton();
+        btn_first = new javax.swing.JButton();
+        btn_next = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -151,6 +153,22 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_first.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_first.setText("First");
+        btn_first.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_firstActionPerformed(evt);
+            }
+        });
+
+        btn_next.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_next.setText("Next");
+        btn_next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,32 +176,39 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6))
-                            .addGap(26, 26, 26)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_emri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_mbiemri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_mosha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_emriPrindit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dataLindjes, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_update)
-                            .addGap(18, 18, 18)
-                            .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(btn_insert, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_emri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_mbiemri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_mosha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_emriPrindit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataLindjes, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btn_insert, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_first, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btn_update)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -217,13 +242,16 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6)
                             .addComponent(dataLindjes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
-                        .addComponent(btn_insert)
-                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_insert)
+                            .addComponent(btn_first, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_next))
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_clear)
                             .addComponent(btn_update)
                             .addComponent(btn_delete))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,13 +330,64 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
+        if (checkInputs() && txt_id.getText() != null) {
+
+            String UpdateQuery;
+            PreparedStatement ps;
+            Connection con = getConnection();
+            try {
+                UpdateQuery = "UPDATE ambullantalogin.rregjistrimipacientit SET emri = ?, mbiemri = ?"
+                        + ",mosha = ?, emriPrindit = ?,dataLindjes = ? WHERE id = ?";
+
+                ps = con.prepareStatement(UpdateQuery);
+
+                ps.setString(1, txt_emri.getText());
+                ps.setString(2, txt_mbiemri.getText());
+                ps.setInt(3, Integer.parseInt(txt_mosha.getText()));
+                ps.setString(4, txt_emriPrindit.getText());
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String addDate = dateFormat.format(dataLindjes.getDate());
+                ps.setString(5, addDate);
+
+                ps.setInt(6, Integer.parseInt(txt_id.getText()));
+
+                ps.executeUpdate();
+                Show_Pacient_In_Table();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(RregjistrimiPacientit.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    //pozita
+    int pozita = 0;
+
+    private void btn_firstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_firstActionPerformed
+        // TODO add your handling code here:
+        pozita = 0;
+        ShowItem(pozita);
+    }//GEN-LAST:event_btn_firstActionPerformed
+
+    private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
+        // TODO add your handling code here:
+        pozita++;
+
+        if (pozita >= getPacientList().size()) {
+            pozita = getPacientList().size() - 1;
+        }
+        ShowItem(pozita);
+    }//GEN-LAST:event_btn_nextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_first;
     private javax.swing.JButton btn_insert;
+    private javax.swing.JButton btn_next;
     private javax.swing.JButton btn_update;
     private com.toedter.calendar.JDateChooser dataLindjes;
     private javax.swing.JLabel jLabel1;
@@ -340,11 +419,11 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
     //Table
     public ArrayList<Pacienti> getPacientList() {
 
-        ArrayList<Pacienti> productList = new ArrayList<Pacienti>();
+        ArrayList<Pacienti> pacientList = new ArrayList<Pacienti>();
         Connection con = getConnection();
         String query = "SELECT * FROM ambullantalogin.rregjistrimipacientit ";
 
@@ -361,19 +440,19 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
                 pacienti = new Pacienti(rs.getInt("id"), rs.getString("emri"),
                         rs.getString("mbiemri"), rs.getInt("mosha"),
                         rs.getString("emriPrindit"), rs.getDate("dataLindjes"));
-                        
-                productList.add(pacienti);
+
+                pacientList.add(pacienti);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(RregjistrimiPacientit.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return productList;
+        return pacientList;
     }
     // 2 - Populate the JTable
 
     public void Show_Pacient_In_Table() {
-        
+
         ArrayList<Pacienti> list = getPacientList();
         DefaultTableModel model = (DefaultTableModel) jTable1_Pacienti.getModel();
 
@@ -387,7 +466,7 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
             row[3] = list.get(i).getMosha();
             row[4] = list.get(i).getEmriPrindit();
             row[5] = list.get(i).getDataLindjes();
-            
+
             model.addRow(row);
 
         }
@@ -403,6 +482,6 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
         txt_mosha.setText(Integer.toString(getPacientList().get(index).getMosha()));
         txt_emriPrindit.setText(getPacientList().get(index).getEmriPrindit());
         dataLindjes.setDate(getPacientList().get(index).getDataLindjes());
-        
+
     }
 }
