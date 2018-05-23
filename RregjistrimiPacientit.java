@@ -251,7 +251,7 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
                             .addComponent(btn_clear)
                             .addComponent(btn_update)
                             .addComponent(btn_delete))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -458,7 +458,7 @@ public final class RregjistrimiPacientit extends javax.swing.JInternalFrame {
 
         //clear jtable content
         model.setRowCount(0);
-        Object[] row = new Object[8];
+        Object[] row = new Object[6];
         for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getId();
             row[1] = list.get(i).getEmri();

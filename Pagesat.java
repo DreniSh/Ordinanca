@@ -22,13 +22,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Pagesat extends javax.swing.JInternalFrame {
 
-   
     public Pagesat() {
         initComponents();
         getConnection();
         Show_Pacient_In_Table();
     }
-    
+
     Connection con = null;
 
     public Connection getConnection() {
@@ -43,8 +42,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
             return null;
         }
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -242,10 +240,10 @@ public class Pagesat extends javax.swing.JInternalFrame {
 
     private void btn_gjeneroPagesenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gjeneroPagesenActionPerformed
         // TODO add your handling code here:
-        double injeksione=Double.parseDouble(txt_sasiaInjeksioneve.getText())*5;
-        double cmimi=injeksione+20;
+        double injeksione = Double.parseDouble(txt_sasiaInjeksioneve.getText()) * 5;
+        double cmimi = injeksione + 20;
         txt_cmimi.setText(Double.toString(cmimi));
-        
+
         ArrayList<Pagesa> pacientList = new ArrayList<Pagesa>();
         Connection con = getConnection();
         String query = "SELECT * FROM ambullantalogin.pagesat ";
@@ -261,17 +259,17 @@ public class Pagesat extends javax.swing.JInternalFrame {
 
             while (rs.next()) {
                 pagesa = new Pagesa(rs.getInt("id"), rs.getString("emri"),
-                                    rs.getString("mbiemri"), rs.getInt("ineksionet"),
-                                    rs.getDouble("cmimi")
+                        rs.getString("mbiemri"), rs.getInt("ineksionet"),
+                        rs.getDouble("cmimi")
                 );
-                        
+
                 pacientList.add(pagesa);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(RregjistrimiPacientit.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btn_gjeneroPagesenActionPerformed
 
     private void txt_sasiaInjeksioneveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sasiaInjeksioneveActionPerformed
@@ -301,7 +299,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btn_saveActionPerformed
 
 
@@ -323,7 +321,7 @@ public class Pagesat extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_mbiemri;
     private javax.swing.JTextField txt_sasiaInjeksioneve;
     // End of variables declaration//GEN-END:variables
-    
+
     public ArrayList<Pagesa> getPacientList() {
 
         ArrayList<Pagesa> pacientList = new ArrayList<Pagesa>();
@@ -346,10 +344,10 @@ public class Pagesat extends javax.swing.JInternalFrame {
 
             while (rs.next()) {
                 pagesa = new Pagesa(rs.getInt("id"), rs.getString("emri"),
-                                    rs.getString("mbiemri"), rs.getInt("ineksionet"),
-                                    rs.getDouble("cmimi")
+                        rs.getString("mbiemri"), rs.getInt("ineksionet"),
+                        rs.getDouble("cmimi")
                 );
-                        
+
                 pacientList.add(pagesa);
             }
 
@@ -383,14 +381,11 @@ public class Pagesat extends javax.swing.JInternalFrame {
             row[2] = list.get(i).getMbiemri();
 
             row[3] = list.get(i).getIneksionet();
-            
+
             row[4] = list.get(i).getCmimi();
 
             model.addRow(row);
 
         }
-
     }
-    
-        
 }
